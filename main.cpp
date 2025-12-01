@@ -121,19 +121,24 @@ void printPath(pair<int,int> exitcell,
 //     // Your code here
 // }
 
-bool dfs(int ent_r, int ent_c, const vector<vector<int>>& maze, bool visited, int parent_r, int parent_c, int exit_r, int exit_c )
+bool dfs(int ent_r, int ent_c, const vector<vector<int>>& maze,const vector<vector<int>>& visited, int parent_r, int parent_c, int exit_r, int exit_c )
 {
+    bool flag = true;
     int rowNumber = ent_r;
     int columnNumber = ent_c;
     int mazeNumber = maze[rowNumber][columnNumber];
-    bool hasVisited = visited;
+
     int parentRow = parent_r;
     int parentColumn = parent_c;
+    int hasVisited = visited[parent_r][parent_c];
+
     int exitRow = exit_r;
     int exitColumn = exit_c;
-   
 
-return hasVisited;
+
+
+
+return flag;
 
 
 
