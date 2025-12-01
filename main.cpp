@@ -121,6 +121,21 @@ void printPath(pair<int,int> exitcell,
 //     // Your code here
 // }
 
+bool dfs(int ent_r, int ent_c, const vector<vector<int>>& maze, visited, int parent_r, int parent_c, int exit_r, int exit_c )
+{
+    int rowNumber = ent_r;
+    int columnNumber = ent_c;
+    maze[ent_r][ent_c] = 1;
+    visited[ent_r][ent_c] = true;
+    int parentRow = parent_r;
+    int parentColumn = parent_c;
+    exit_r;
+    exit_c;
+
+
+
+}
+
 
 // ----------------------------------------------------------
 // MAIN PROGRAM (students add DFS calls and logic)
@@ -160,6 +175,7 @@ int main() {
     // Call your DFS, track visited, and fill parent_r and parent_c
     // ------------------------------------------------------
     // bool found = dfs(ent_r, ent_c, maze, visited, parent_r, parent_c, exit_r, exit_c);
+
 
     // ------------------------------------------------------
     // STUDENT WORK:
