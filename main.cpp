@@ -128,25 +128,40 @@ bool dfs(int ent_r, int ent_c,
     vector<vector<int>>& parent_c,
     int exit_r, int exit_c)
 {
-    bool flag = true;
-    int rowNumber = ent_r;
-    int columnNumber = ent_c;
-    int mazeNumber = maze[rowNumber][columnNumber];
+    bool flag = false;
+    const int rowNumber = ent_r;
+    const int columnNumber = ent_c;
+    const int mazeNumber = maze[rowNumber][columnNumber];
+    const int hasVisited = visited[rowNumber][columnNumber];
 
-    int parentRow = parent_r;
-    int parentColumn = parent_c;
-    int hasVisited = visited[parent_r][parent_c];
+    const int parentNumberRow = parent_r[ent_r][ent_c];
+    const int parentNumberColumn = parent_c[ent_c][ent_r];
 
-    int exitRow = exit_r;
-    int exitColumn = exit_c;
+    const int exitRow = exit_r;
+    const int exitColumn = exit_c;
+    const int mazeExit = maze[exitRow][exitColumn];
+
+    while (mazeNumber == 0) {
+        ent_r++;
+        ent_c++;
+        const int rowNumber = ent_r;
+        const int columnNumber = ent_c;
+        const int mazeNumber = maze[rowNumber][columnNumber];
+        if (mazeNumber == 1) {
+
+        }
+
+
+
+
+
+
+    }
 
 
 
 
 return flag;
-
-
-
 }
 
 
@@ -187,18 +202,18 @@ int main() {
     // STUDENT WORK:
     // Call your DFS, track visited, and fill parent_r and parent_c
     // ------------------------------------------------------
-    // bool found = dfs(ent_r, ent_c, maze, visited, parent_r, parent_c, exit_r, exit_c);
+     bool found = dfs(ent_r, ent_c, maze, visited, parent_r, parent_c, exit_r, exit_c);
 
 
     // ------------------------------------------------------
     // STUDENT WORK:
     // If found, print the path
     // ------------------------------------------------------
-    // if (found) {
-    //     printPath(exitcell, parent_r, parent_c, ent_r, ent_c);
-    // } else {
-    //     cout << "\nNo path exists.\n";
-    // }
+     if (found) {
+         printPath(exitcell, parent_r, parent_c, ent_r, ent_c);
+     } else {
+         cout << "\nNo path exists.\n";
+     }
 
     return 0;
 }
