@@ -123,46 +123,56 @@ void printPath(pair<int,int> exitcell,
 
 bool dfs(int ent_r, int ent_c,
     const vector<vector<int>>& maze,
-    const vector<vector<bool>>& visited,
+    vector<vector<bool>>& visited,
     vector<vector<int>>& parent_r,
     vector<vector<int>>& parent_c,
-    int exit_r, int exit_c)
-{
-    bool flag = false;
-    const int rowNumber = ent_r;
-    const int columnNumber = ent_c;
-    const int mazeNumber = maze[rowNumber][columnNumber];
-    const int hasVisited = visited[rowNumber][columnNumber];
-
-    const int parentNumberRow = parent_r[ent_r][ent_c];
-    const int parentNumberColumn = parent_c[ent_c][ent_r];
-
-    const int exitRow = exit_r;
-    const int exitColumn = exit_c;
-    const int mazeExit = maze[exitRow][exitColumn];
-
-    while (mazeNumber == 0) {
-        ent_r++;
-        ent_c++;
-        const int rowNumber = ent_r;
-        const int columnNumber = ent_c;
-        const int mazeNumber = maze[rowNumber][columnNumber];
-        if (mazeNumber == 1) {
-
-        }
+    int exit_r, int exit_c) {
+    int row = maze.size();
+    int col = maze[0].size();
 
 
-
-
-
-
+    //checking for out of Bounds
+    if (row < 0 || ent_r >= row || col < 0 || ent_c >= col) {
+        return false;
     }
 
+    //checking for a wall or visited
+    if (maze[ent_r][ent_c] == 1 || visited[ent_r][ent_c]) {
+        return false;
+    }
+
+    //marked as visited
+    visited[ent_r][ent_c] = true;
+
+    //exit was found
+    if (ent_r == exit_r && ent_c == exit_c) {
+        return true;
+    }
+
+    //directions to move in the maze
+    int dr[4] = {-1, 0, 1, 0};
+    int dc[4] = {0, 1, 0, -1};
+
+    //starts from the beginning and searches until
+    for (int i = 0; i < 4; i++) {
+        int newRow = ent_r + dr[i];
+        int newCol = ent_c + dc[i];
+
+        //if it is within the maze and has not been visited or a wall
+        //move until exit is reached
+        if (newRow >= 0 && newRow < row && newCol >= 0 && newCol < col && !visited[newRow][newCol] && maze[newRow][newCol] == 1) {
+            parent_r[newRow][newCol] = ent_r;
+            parent_c[newRow][newCol] = ent_c;
 
 
+            if (dfs(newRow, newCol, maze,visited,parent_r,parent_c, exit_r, exit_c)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    }
 
-return flag;
-}
 
 
 // ----------------------------------------------------------
