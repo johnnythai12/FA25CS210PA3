@@ -215,7 +215,8 @@ int main() {
     // If found, print the path
     // ------------------------------------------------------
      if (found) {
-         printPath(exitcell, parent_r, parent_c, exit_r, exit_c);
+         printPath(exitcell, parent_r, parent_c, ent_r, ent_c);
+
      } else {
          cout << "\nNo path exists.\n";
 
